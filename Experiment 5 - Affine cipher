@@ -1,0 +1,12 @@
+text = input("Enter Plain Text: ").upper()
+a = int(input("Enter value of a: "))
+b = int(input("Enter value of b: "))
+cipher = ""
+for ch in text:
+    if ch.isalpha():
+        p = ord(ch) - 65
+        c = (a * p + b) % 26
+        cipher += chr(c + 65)
+    else:
+        cipher += ch
+print("Cipher Text:", cipher)
