@@ -1,0 +1,12 @@
+text = input("Enter Plain Text: ")
+key = int(input("Enter Key: "))
+cipher = ""
+for ch in text:
+    if ch.isalpha():
+        if ch.isupper():
+            cipher += chr((ord(ch) - ord('A') + key) % 26 + ord('A'))
+        else:
+            cipher += chr((ord(ch) - ord('a') + key) % 26 + ord('a'))
+    else:
+        cipher += ch
+print("Cipher Text:", cipher)
