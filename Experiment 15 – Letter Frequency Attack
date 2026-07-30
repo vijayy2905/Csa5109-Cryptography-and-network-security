@@ -1,0 +1,8 @@
+cipher = input("Enter Cipher Text: ").upper()
+freq = {}
+for ch in cipher:
+    if ch.isalpha():
+        freq[ch] = freq.get(ch,0)+1
+print("Letter Frequency")
+for k,v in sorted(freq.items()):
+    print(k,":",v)
