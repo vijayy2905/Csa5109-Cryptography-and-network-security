@@ -1,0 +1,12 @@
+inverse = [[7,22],
+           [21,9]]
+cipher = input("Enter Cipher Text: ").upper()
+plain = ""
+for i in range(0,len(cipher),2):
+    c1 = ord(cipher[i])-65
+    c2 = ord(cipher[i+1])-65
+    p1 = (inverse[0][0]*c1 + inverse[0][1]*c2)%26
+    p2 = (inverse[1][0]*c1 + inverse[1][1]*c2)%26
+    plain += chr(p1+65)
+    plain += chr(p2+65)
+print("Plain Text:",plain)
