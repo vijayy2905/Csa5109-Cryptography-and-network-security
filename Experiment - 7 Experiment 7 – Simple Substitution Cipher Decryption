@@ -1,0 +1,10 @@
+plain = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+cipher = "QWERTYUIOPASDFGHJKLZXCVBNM"
+text = input("Enter Cipher Text: ").upper()
+result = ""
+for ch in text:
+    if ch.isalpha():
+        result += plain[cipher.index(ch)]
+    else:
+        result += ch
+print("Plain Text:", result)
