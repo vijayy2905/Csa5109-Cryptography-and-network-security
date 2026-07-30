@@ -1,0 +1,13 @@
+key = [[9,4],[5,7]]
+text = input("Enter Plain Text: ").upper().replace(" ","")
+if len(text)%2!=0:
+    text += "X"
+cipher=""
+for i in range(0,len(text),2):
+    p1 = ord(text[i])-65
+    p2 = ord(text[i+1])-65
+    c1 = (9*p1 + 4*p2)%26
+    c2 = (5*p1 + 7*p2)%26
+    cipher += chr(c1+65)
+    cipher += chr(c2+65)
+print("Cipher Text:",cipher)
