@@ -1,0 +1,9 @@
+key = input("Enter Keyword: ").upper()
+key = key.replace("J", "I")
+matrix = []
+for ch in key + "ABCDEFGHIKLMNOPQRSTUVWXYZ":
+    if ch not in matrix:
+        matrix.append(ch)
+print("Playfair Matrix")
+for i in range(0, 25, 5):
+    print(*matrix[i:i+5])
