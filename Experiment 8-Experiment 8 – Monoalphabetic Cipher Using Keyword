@@ -1,0 +1,19 @@
+keyword = input("Enter Keyword: ").upper()
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+key = ""
+for ch in keyword:
+    if ch not in key:
+        key += ch
+for ch in alphabet:
+    if ch not in key:
+        key += ch
+print("Generated Cipher Alphabet:")
+print(key)
+text = input("Enter Plain Text: ").upper()
+cipher = ""
+for ch in text:
+    if ch.isalpha():
+        cipher += key[alphabet.index(ch)]
+    else:
+        cipher += ch
+print("Cipher Text:", cipher)
