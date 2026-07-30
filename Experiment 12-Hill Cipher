@@ -1,0 +1,12 @@
+import numpy as np
+key = np.array([[9,4],[5,7]])
+text = input("Enter Plain Text: ").upper().replace(" ","")
+while len(text)%2!=0:
+    text += "X"
+cipher = ""
+for i in range(0,len(text),2):
+    p = np.array([[ord(text[i])-65],[ord(text[i+1])-65]])
+    c = np.dot(key,p)%26
+    cipher += chr(c[0][0]+65)
+    cipher += chr(c[1][0]+65)
+print("Cipher Text:",cipher)
