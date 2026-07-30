@@ -1,0 +1,11 @@
+cipher = input("Enter Cipher Text: ").upper()
+freq = {}
+for ch in cipher:
+    if ch.isalpha():
+        freq[ch] = freq.get(ch, 0) + 1
+print("Letter Frequency:")
+for letter in sorted(freq):
+    print(letter, ":", freq[letter])
+max_letter = max(freq, key=freq.get)
+print("Most Frequent Letter:", max_letter)
+print("Assume it represents 'E' to begin decryption.")
