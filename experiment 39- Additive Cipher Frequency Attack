@@ -1,0 +1,10 @@
+cipher = input("Enter Cipher Text: ").upper()
+print("\nTop 10 Possible Plaintexts:")
+for key in range(10):
+    plain = ""
+    for ch in cipher:
+        if ch.isalpha():
+            plain += chr((ord(ch) - 65 - key) % 26 + 65)
+        else:
+            plain += ch
+    print("Key", key, ":", plain)
