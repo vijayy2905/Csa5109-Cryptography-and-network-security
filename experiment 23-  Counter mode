@@ -1,0 +1,18 @@
+plaintext = "000000010000001000000100"
+key = "0111111101"
+counter = 0
+cipher = ""
+for i in range(0, len(plaintext), 8):
+    block = plaintext[i:i+8]
+    count = format(counter, "08b")
+    result = ""
+    for j in range(len(block)):
+        result += str(
+            int(block[j]) ^ int(count[j])
+        )
+    cipher += result
+    counter += 1
+print("Plaintext :", plaintext)
+print("Key       :", key)
+print("Ciphertext:", cipher)
+print("\nCounter Mode encryption/decryption demonstrated.")
