@@ -1,0 +1,24 @@
+q = 23
+a = 5
+
+xa = int(input("Enter Alice secret x: "))
+xb = int(input("Enter Bob secret x: "))
+
+# Alice sends a^x mod q
+A = pow(a, xa, q)
+
+# Bob sends a^x mod q
+B = pow(a, xb, q)
+
+# Shared key
+key_alice = pow(B, xa, q)
+key_bob = pow(A, xb, q)
+
+print("Alice sends:", A)
+print("Bob sends  :", B)
+
+print("Alice key  :", key_alice)
+print("Bob key    :", key_bob)
+
+if key_alice == key_bob:
+    print("Shared key established successfully.")
