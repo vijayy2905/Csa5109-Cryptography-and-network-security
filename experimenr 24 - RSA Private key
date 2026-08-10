@@ -1,0 +1,19 @@
+import math
+e = 31
+n = 3599
+# Find p and q
+for p in range(2, n):
+    if n % p == 0:
+        q = n // p
+        if p * q == n:
+            break
+print("p =", p)
+print("q =", q)
+phi = (p - 1) * (q - 1)
+print("Phi(n) =", phi)
+# Find d
+for d in range(1, phi):
+    if (e * d) % phi == 1:
+        break
+print("Private Key d =", d)
+print("Private Key =", (d, n))
