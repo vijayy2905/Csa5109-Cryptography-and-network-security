@@ -1,0 +1,22 @@
+def generate_keys(key):
+    keys = []
+    for i in range(16):
+        shifted = key[i:] + key[:i]
+        keys.append(shifted)
+    return keys
+def decrypt(cipher, keys):
+    data = cipher
+    for key in reversed(keys):
+        result = ""
+        for i in range(len(data)):
+            result += chr(
+                ((ord(data[i]) - 65) ^
+                 (ord(key[i % len(key)]) - 65)) % 26 + 65
+            )
+        data = result
+    return data
+key = input("Enter Key: ").upper()
+cipher = input("Enter Cipher Text: ").upper()
+keys = generate_keys(key)
+plain = decrypt(cipher, keys)
+print("Decrypted Text:", plain)
