@@ -1,0 +1,16 @@
+def left_shift(bits):
+    return ((bits << 1) & ((1 << 128) - 1))
+R128 = 0x87
+L = 0
+print("Initial L =", hex(L))
+K1 = left_shift(L)
+if L & (1 << 127):
+    K1 ^= R128
+K2 = left_shift(K1)
+if K1 & (1 << 127):
+    K2 ^= R128
+print("K1 =", hex(K1))
+print("K2 =", hex(K2))
+print("\nCMAC Constants:")
+print("64-bit  block : 0x1B")
+print("128-bit block : 0x87")
