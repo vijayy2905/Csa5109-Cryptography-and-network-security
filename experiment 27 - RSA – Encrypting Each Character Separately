@@ -1,0 +1,15 @@
+e = 31
+n = 3599
+text = input("Enter Text: ").upper()
+cipher = []
+for ch in text:
+    if ch.isalpha():
+        m = ord(ch) - 65
+        c = pow(m, e, n)
+        cipher.append(c)
+print("Cipher Text:")
+print(cipher)
+print("\nSecurity Analysis:")
+print("No, encrypting each character separately is not secure.")
+print("Repeated plaintext letters produce repeated ciphertext.")
+print("Frequency analysis can reveal the plaintext pattern.")
