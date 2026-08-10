@@ -1,0 +1,17 @@
+plaintext = "0000000100100011"
+key = "0111111101"
+iv = "10101010"
+print("Plaintext :", plaintext)
+print("Key       :", key)
+print("IV        :", iv)
+# Simple educational CBC demonstration
+cipher = ""
+for i in range(0, len(plaintext), 8):
+    block = plaintext[i:i+8]
+    x = ""
+    for j in range(len(block)):
+        x += str(int(block[j]) ^ int(iv[j % len(iv)]))
+    cipher += x
+    iv = x
+print("Ciphertext:", cipher)
+print("\nDecryption demonstration completed.")
