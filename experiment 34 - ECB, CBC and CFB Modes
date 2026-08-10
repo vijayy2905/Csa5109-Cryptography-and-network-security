@@ -1,0 +1,15 @@
+text = input("Enter Plain Text: ")
+print("\nECB Mode")
+print("Block 1:", text[:4])
+print("Block 2:", text[4:8])
+
+print("\nCBC Mode")
+print("Previous ciphertext is used with each block.")
+
+print("\nCFB Mode")
+print("Previous ciphertext is used to generate the next segment.")
+
+print("\nPadding")
+print("A 1 bit followed by zero bits is added when required.")
+print("A padding block can also be added to make message lengths")
+print("indistinguishable and simplify processing.")
