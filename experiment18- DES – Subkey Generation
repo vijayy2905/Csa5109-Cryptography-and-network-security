@@ -1,0 +1,16 @@
+key = input("Enter 56-bit Key: ")
+if len(key) != 56 or any(ch not in "01" for ch in key):
+    print("Enter exactly 56 binary bits.")
+else:
+    left = key[:28]
+    right = key[28:]
+    shifts = [1, 1, 2, 2, 2, 2, 2, 2,
+              1, 2, 2, 2, 2, 2, 2, 1]
+    print("\nDES Subkeys:")
+    for i in range(16):
+        left = left[shifts[i]:] + left[:shifts[i]]
+        right = right[shifts[i]:] + right[:shifts[i]]
+        subkey = left + right
+        # Demonstration of 48-bit subkey
+        subkey = subkey[:48]
+        print("K" + str(i + 1) + ":", subkey)
