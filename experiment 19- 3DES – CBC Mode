@@ -1,0 +1,30 @@
+def xor(a, b):
+    return bytes(x ^ y for x, y in zip(a, b))
+def pad(data, size=8):
+    n = size - len(data) % size
+    return data + bytes([n] * n)
+def simple_des(data, key):
+    return bytes(data[i] ^ key[i % len(key)]
+                 for i in range(len(data)))
+def triple_des(data, k1, k2, k3):
+    data = simple_des(data, k1)
+    data = simple_des(data, k2)
+    data = simple_des(data, k3)
+    return data
+plaintext = input("Enter Plain Text: ").encode()
+k1 = input("Enter Key 1 (8 characters): ").encode()
+k2 = input("Enter Key 2 (8 characters): ").encode()
+k3 = input("Enter Key 3 (8 characters): ").encode()
+iv = b"12345678"
+plaintext = pad(plaintext)
+previous = iv
+cipher = b""
+for i in range(0, len(plaintext), 8):
+    block = plaintext[i:i+8]
+    block = xor(block, previous)
+    encrypted = triple_des(block, k1, k2, k3)
+    cipher += encrypted
+    previous = encrypted
+print("Cipher Text (hex):", cipher.hex())
+print("\nSecurity  : 3DES")
+print("Performance: DES is faster than 3DES")
