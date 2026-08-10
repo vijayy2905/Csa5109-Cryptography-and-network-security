@@ -1,0 +1,20 @@
+plaintext = input("Enter Plain Text: ")
+print("\nECB Mode :")
+print(plaintext)
+print("\nCBC Mode :")
+cbc = ""
+previous = 0
+for ch in plaintext:
+    value = ord(ch) ^ previous
+    cbc += chr(value)
+    previous = value
+print(cbc)
+print("\nCFB Mode :")
+cfb = ""
+for ch in plaintext:
+    cfb += chr(ord(ch) ^ 1)
+print(cfb)
+print("\nPadding:")
+print("A 1-bit followed by zero bits is used.")
+print("A padding block is added even when the message is complete")
+print("to hide the actual message length and provide uniform processing.")
