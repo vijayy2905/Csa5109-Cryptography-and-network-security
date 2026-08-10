@@ -1,0 +1,12 @@
+import math
+print("Allowed values of a:")
+allowed = []
+for a in range(26):
+    if math.gcd(a, 26) == 1:
+        allowed.append(a)
+print(allowed)
+print("\nLimitations on b:")
+print("b can be any value from 0 to 25.")
+print("\nNot allowed values of a:")
+not_allowed = [a for a in range(26) if a not in allowed]
+print(not_allowed)
