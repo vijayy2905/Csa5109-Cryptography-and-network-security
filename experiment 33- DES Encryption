@@ -1,0 +1,11 @@
+def xor_bits(a, b):
+    return ''.join(str(int(x) ^ int(y)) for x, y in zip(a, b))
+plaintext = input("Enter 64-bit Plain Text: ")
+key = input("Enter 64-bit Key: ")
+if len(plaintext) != 64 or len(key) != 64:
+    print("Enter exactly 64 bits.")
+else:
+    cipher = xor_bits(plaintext, key)
+    print("Plain Text :", plaintext)
+    print("Key        :", key)
+    print("Cipher Text:", cipher)
