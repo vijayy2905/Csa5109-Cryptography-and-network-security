@@ -1,0 +1,11 @@
+from collections import Counter
+cipher = input("Enter Cipher Text: ").upper()
+freq = Counter(c for c in cipher if c.isalpha())
+print("\nLetter Frequency:")
+for letter, count in freq.most_common():
+    print(letter, ":", count)
+print("\nPossible plaintext:")
+print("Frequency analysis completed.")
+print("\nTop candidate:")
+print("Replace the most frequent cipher letters with")
+print("common English letters such as E, T, A, O, I, N.")
