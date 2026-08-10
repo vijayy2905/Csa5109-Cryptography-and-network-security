@@ -1,0 +1,17 @@
+def xor(a, b):
+    return bytes(x ^ y for x, y in zip(a, b))
+def simple_encrypt(data, key):
+    return xor(data, key)
+key = b"12345678"
+x = b"ABCDEFGH"
+# MAC of X
+T = simple_encrypt(x, key)
+print("Message X :", x)
+print("MAC T     :", T.hex())
+# X || (X XOR T)
+second = xor(x, T)
+print("\nSecond Block X XOR T:")
+print(second.hex())
+print("\nTwo-block Message:")
+print(x, second)
+print("\nCBC-MAC demonstration completed.")
