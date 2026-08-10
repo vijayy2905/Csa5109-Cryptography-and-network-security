@@ -1,0 +1,8 @@
+import math
+# Playfair uses 25 letters (I/J combined)
+total_keys = math.factorial(25)
+print("Total possible Playfair keys = 25!")
+print("Approximate value =", total_keys)
+print("\nApproximate power of 2:")
+print("log2(25!) =", math.log2(total_keys))
+print("\nEffective Playfair key space is approximately 2^76")
