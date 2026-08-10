@@ -1,0 +1,13 @@
+import random
+message = "HELLO"
+print("Message:", message)
+k1 = random.randint(1, 100)
+k2 = random.randint(1, 100)
+print("\nFirst Signature")
+print("Random k =", k1)
+print("\nSecond Signature")
+print("Random k =", k2)
+if k1 != k2:
+    print("\nSignatures will be different.")
+else:
+    print("\nSame k generated.")
