@@ -1,0 +1,32 @@
+import numpy as np
+P = np.array([
+    [0, 2],
+    [1, 3]
+])
+C = np.array([
+    [5, 13],
+    [12, 8]
+])
+det = int(round(np.linalg.det(P))) % 26
+for x in range(26):
+    if (det * x) % 26 == 1:
+        inv_det = x
+        break
+else:
+    print("Plaintext matrix has no inverse.")
+    exit()
+a = P[0][0]
+b = P[0][1]
+c = P[1][0]
+d = P[1][1]
+P_inv = np.array([
+    [d * inv_det, -b * inv_det],
+    [-c * inv_det, a * inv_det]
+]) % 26
+key = (C @ P_inv) % 26
+print("Plaintext Matrix:")
+print(P)
+print("\nCiphertext Matrix:")
+print(C)
+print("\nRecovered Key:")
+print(key)
