@@ -1,0 +1,14 @@
+rate = 1024
+state = 1600
+capacity = state - rate
+print("SHA-3 State Size :", state, "bits")
+print("Block Size       :", rate, "bits")
+print("Capacity         :", capacity, "bits")
+lanes = 25
+print("\nNumber of lanes =", lanes)
+print("\nInitial capacity lanes:")
+print("All capacity lanes are zero.")
+print("\nSince permutation is ignored,")
+print("zero lanes remain zero.")
+print("\nTherefore:")
+print("They will never become nonzero without permutation.")
