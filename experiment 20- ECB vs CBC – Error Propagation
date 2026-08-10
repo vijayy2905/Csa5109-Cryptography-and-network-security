@@ -1,0 +1,30 @@
+def xor(a, b):
+    return bytes(x ^ y for x, y in zip(a, b))
+p1 = b"BLOCK001"
+p2 = b"BLOCK002"
+p3 = b"BLOCK003"
+iv = b"12345678"
+key = b"ABCDEFGH"
+# Simple educational block operation
+def encrypt(block):
+    return xor(block, key)
+c1 = encrypt(xor(p1, iv))
+c2 = encrypt(xor(p2, c1))
+c3 = encrypt(xor(p3, c2))
+print("Original CBC Cipher Blocks:")
+print("C1 =", c1.hex())
+print("C2 =", c2.hex())
+print("C3 =", c3.hex())
+# Introduce one-bit error in C1
+bad_c1 = bytes([c1[0] ^ 1]) + c1[1:]
+print("\nAfter error in C1:")
+# CBC decryption
+bad_p1 = xor(encrypt(bad_c1), iv)
+bad_p2 = xor(encrypt(c2), bad_c1)
+bad_p3 = xor(encrypt(c3), c2)
+print("P1 =", bad_p1)
+print("P2 =", bad_p2)
+print("P3 =", bad_p3)
+print("\nConclusion:")
+print("C1 error affects P1 and P2.")
+print("Blocks beyond P2 are not affected.")
