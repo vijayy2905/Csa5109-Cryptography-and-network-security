@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+SecureEHR | Cryptographic Security Portal
+</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- ======================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            R3
+        </div>
+
+        <div>
+            <strong>SecureEHR</strong>
+            <small>Cryptographic Portal</small>
+        </div>
+
+    </div>
+
+
+    <div class="admin">
+
+        <div class="admin-avatar">
+            SA
+        </div>
+
+        <div>
+            <strong>System Administrator</strong>
+            <small>Health IT Security</small>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <div class="section-title">
+            OVERVIEW
+        </div>
+
+        <button class="nav-button active"
+                data-page="dashboard">
+
+            <span>⌂</span>
+            Dashboard
+
+        </button>
+
+
+        <div class="section-title">
+            CRYPTOGRAPHY
+        </div>
+
+        <button class="nav-button"
+                data-page="sign">
+
+            <span>▣</span>
+            Sign EHR
+
+        </button>
+
+
+        <button class="nav-button"
+                data-page="verify">
+
+            <span>✓</span>
+            Verify Document
+
+        </button>
+
+
+        <button class="nav-button"
+                data-page="hash">
+
+            <span>◈</span>
+            Hash Analysis
+
+        </button>
+
+
+        <button class="nav-button"
+                data-page="signature">
+
+            <span>◇</span>
+            Signature Analysis
+
+        </button>
+
+
+        <div class="section-title">
+            VALIDATION
+        </div>
+
+
+        <button class="nav-button"
+                data-page="tamper">
+
+            <span>⚠</span>
+            Tamper Detection
+
+        </button>
+
+
+        <button class="nav-button"
+                data-page="tests">
+
+            <span>▤</span>
+            Test Results
+
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div>Documentation</div>
+        <div>Assignment 5</div>
+        <div>GitHub Project</div>
+
+    </div>
+
+</aside>
+
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main class="main">
+
+<header class="topbar">
+
+    <div>
+
+        <h1>
+            Cryptographic Command & Control
+        </h1>
+
+        <p>
+            Secure Electronic Health Record exchange
+        </p>
+
+    </div>
+
+
+    <div class="system-status">
+
+        <span></span>
+        SYSTEM SECURE
+
+    </div>
+
+</header>
+
+
+<!-- ======================================================
+     DASHBOARD
+====================================================== -->
+
+<section id="dashboard"
+         class="page active">
+
+    <div class="blue-panels">
+
+        <div class="blue-panel">
+
+            <div class="panel-icon">
+                ⌁
+            </div>
+
+            <h3>
+                Integrity
+            </h3>
+
+            <p>
+                SHA-256 protects canonical EHR
+                payloads against unauthorized
+                modification.
+            </p>
+
+        </div>
+
+
+        <div class="blue-panel">
+
+            <div class="panel-icon">
+                ◇
+            </div>
+
+            <h3>
+                Authentication
+            </h3>
+
+            <p>
+                Digital signatures bind the
+                record to the originating
+                hospital identity.
+            </p>
+
+        </div>
+
+
+        <div class="blue-panel">
+
+            <div class="panel-icon">
+                ▤
+            </div>
+
+            <h3>
+                Auditability
+            </h3>
+
+            <p>
+                Signed envelopes provide
+                evidence for independent
+                verification.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="health-card">
+
+        <div>
+
+            <small>
+                CRYPTOGRAPHIC HEALTH SCORE
+            </small>
+
+            <h2>
+                Protected Condition
+            </h2>
+
+            <p>
+                Cryptographic verification
+                services are operational across
+                the simulated healthcare network.
+            </p>
+
+        </div>
+
+
+        <div class="score">
+            98
+            <span>/100</span>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <div class="card">
+
+            <div class="card-heading">
+                EHR Security Overview
+            </div>
+
+            <div class="large-number">
+                10
+                <small>
+                    security tests
+                </small>
+            </div>
+
+            <div class="progress">
+                <span></span>
+            </div>
+
+            <p>
+                Validation scenarios implemented
+                for the secure EHR workflow.
+            </p>
+
+            <button class="primary"
+                    onclick="openPage('tests')">
+
+                Review Test Results
+
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-heading">
+                Verification Overview
+            </div>
+
+            <div class="large-number">
+                2
+                <small>
+                    signature schemes
+                </small>
+            </div>
+
+            <div class="info-row">
+                <span>RSA-2048/PSS</span>
+                <b>Compatible</b>
+            </div>
+
+            <div class="info-row">
+                <span>ECDSA P-256</span>
+                <b>Primary</b>
+            </div>
+
+            <button class="primary"
+                    onclick="openPage('signature')">
+
+                Compare Schemes
+
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-heading">
+                Secure Pipeline
+            </div>
+
+            <div class="pipeline">
+
+                <span>Hospital</span>
+
+                <b>→</b>
+
+                <span>Lab</span>
+
+                <b>→</b>
+
+                <span>Insurance</span>
+
+            </div>
+
+            <div class="secure-route">
+                <i></i>
+                Secure route active
+            </div>
+
+            <button class="primary"
+                    onclick="openPage('verify')">
+
+                Verify EHR
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     SIGN
+====================================================== -->
+
+<section id="sign"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Sign EHR Document
+            </h2>
+
+            <p>
+                Canonicalize → SHA-256 →
+                Digital Signature → Secure Envelope
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="workspace">
+
+        <div class="card">
+
+            <label>
+                Record Type
+            </label>
+
+            <select id="recordType">
+
+                <option value="ehr">
+                    Diagnosis Report
+                </option>
+
+                <option value="prescription">
+                    Digital Prescription
+                </option>
+
+            </select>
+
+
+            <label>
+                Signature Scheme
+            </label>
+
+            <select id="scheme">
+
+                <option>
+                    ECDSA P-256
+                </option>
+
+                <option>
+                    RSA-2048/PSS
+                </option>
+
+            </select>
+
+
+            <label>
+                EHR JSON Document
+            </label>
+
+            <textarea id="signInput"></textarea>
+
+
+            <button class="primary full"
+                    onclick="signDocument()">
+
+                GENERATE SIGNATURE
+
+            </button>
+
+        </div>
+
+
+        <div class="card output-card">
+
+            <div class="card-heading">
+                Secure Envelope
+            </div>
+
+            <pre id="signOutput">Ready.</pre>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     VERIFY
+====================================================== -->
+
+<section id="verify"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Verify Document
+            </h2>
+
+            <p>
+                Receiving portal verifies digest
+                and digital signature.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="workspace">
+
+        <div class="card">
+
+            <label>
+                Signed Envelope JSON
+            </label>
+
+            <textarea id="verifyInput"></textarea>
+
+
+            <button class="primary full"
+                    onclick="verifyDocument()">
+
+                VERIFY DOCUMENT
+
+            </button>
+
+        </div>
+
+
+        <div class="card verification-card">
+
+            <div id="verificationIcon"
+                 class="verification-icon">
+
+                ?
+
+            </div>
+
+            <h2 id="verificationTitle">
+
+                Waiting for verification
+
+            </h2>
+
+
+            <div class="check-list">
+
+                <div>
+                    <span>
+                        Digest Match
+                    </span>
+
+                    <b id="digestResult">
+                        —
+                    </b>
+                </div>
+
+
+                <div>
+                    <span>
+                        Signature Valid
+                    </span>
+
+                    <b id="signatureResult">
+                        —
+                    </b>
+                </div>
+
+
+                <div>
+                    <span>
+                        Final Outcome
+                    </span>
+
+                    <b id="outcomeResult">
+                        —
+                    </b>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     HASH
+====================================================== -->
+
+<section id="hash"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Hash Algorithm Analysis
+            </h2>
+
+            <p>
+                Benchmark of cryptographic hash
+                functions using the synthetic EHR.
+            </p>
+
+        </div>
+
+
+        <button class="primary"
+                onclick="loadHashAnalysis()">
+
+            RUN BENCHMARK
+
+        </button>
+
+    </div>
+
+
+    <div class="card table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Algorithm
+                    </th>
+
+                    <th>
+                        Digest
+                    </th>
+
+                    <th>
+                        Time
+                    </th>
+
+                    <th>
+                        Avalanche
+                    </th>
+
+                    <th>
+                        Assessment
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="hashTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     SIGNATURE
+====================================================== -->
+
+<section id="signature"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Digital Signature Analysis
+            </h2>
+
+            <p>
+                RSA-2048/PSS versus ECDSA P-256
+                using SHA-256.
+            </p>
+
+        </div>
+
+
+        <button class="primary"
+                onclick="loadSignatureAnalysis()">
+
+            RUN COMPARISON
+
+        </button>
+
+    </div>
+
+
+    <div id="signatureCards"
+         class="comparison-grid">
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     TAMPER
+====================================================== -->
+
+<section id="tamper"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Tamper Detection Lab
+            </h2>
+
+            <p>
+                Demonstrate how an unauthorized
+                modification is detected.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="tamper-grid">
+
+
+        <div class="card">
+
+            <div class="card-heading">
+                ORIGINAL RECORD
+            </div>
+
+            <div class="record-box"
+                 id="originalRecord">
+
+                Loading...
+
+            </div>
+
+            <small class="hash-title">
+                ORIGINAL SHA-256
+            </small>
+
+            <code id="originalHash">
+                —
+            </code>
+
+        </div>
+
+
+        <div class="tamper-arrow">
+            →
+        </div>
+
+
+        <div class="card danger-card">
+
+            <div class="card-heading">
+                MODIFIED RECORD
+            </div>
+
+            <div class="record-box"
+                 id="tamperedRecord">
+
+                Waiting for simulation...
+
+            </div>
+
+            <small class="hash-title">
+                RECOMPUTED SHA-256
+            </small>
+
+            <code id="tamperedHash">
+                —
+            </code>
+
+        </div>
+
+    </div>
+
+
+    <button class="danger-button"
+            onclick="simulateTampering()">
+
+        ⚠ SIMULATE IN-TRANSIT TAMPERING
+
+    </button>
+
+
+    <div id="tamperResult"
+         class="tamper-result hidden">
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     TESTS
+====================================================== -->
+
+<section id="tests"
+         class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>
+                Validation & Test Results
+            </h2>
+
+            <p>
+                Assignment test cases TC-01 through TC-10.
+            </p>
+
+        </div>
+
+
+        <button class="primary"
+                onclick="loadTests()">
+
+            RUN ALL TESTS
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div id="testSummary"
+             class="test-summary">
+
+            Ready to execute validation suite.
+
+        </div>
+
+
+        <div id="testList">
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>
